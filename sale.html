@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale — Luxoria Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Sale hero — dark & dramatic */
+    .sale-hero {
+      background: var(--deep);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sale-hero-bg {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 200px; font-weight: 300;
+      color: rgba(255,255,255,0.03);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      white-space: nowrap; pointer-events: none;
+    }
+    .sale-hero-eyebrow {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose-deep); margin-bottom: 16px;
+    }
+    .sale-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px; font-weight: 300;
+      color: var(--gold); line-height: 1.1; margin-bottom: 16px;
+    }
+    .sale-hero h1 em { font-style: italic; color: var(--rose); }
+    .sale-hero p {
+      color: rgba(255,255,255,0.5); font-size: 15px;
+      max-width: 500px; margin: 0 auto 32px; line-height: 1.8;
+    }
+    .sale-countdown {
+      display: flex; justify-content: center; gap: 24px;
+      margin-bottom: 32px;
+    }
+    .countdown-unit {
+      text-align: center;
+    }
+    .countdown-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; font-weight: 300;
+      color: var(--gold); line-height: 1;
+      display: block;
+    }
+    .countdown-label {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-top: 4px;
+    }
+    .countdown-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; color: rgba(255,255,255,0.2);
+      line-height: 1; margin-top: 0;
+    }
+
+    /* Sale badge strip */
+    .sale-strip {
+      display: flex; justify-content: center; gap: 16px;
+      padding: 20px 60px;
+      background: var(--rose-deep);
+    }
+    .sale-strip span {
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: #fff; font-weight: 400;
+    }
+
+    /* Sale product overrides */
+    .product-price-original {
+      text-decoration: line-through;
+      color: var(--text-light); font-size: 13px; margin-right: 6px;
+    }
+    .product-price-sale {
+      color: var(--rose-deep); font-weight: 500; font-size: 15px;
+    }
+    .pct-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--rose-deep); color: #fff;
+      font-size: 12px; font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    /* Category sale sections */
+    .sale-category-label {
+      display: flex; align-items: center; gap: 16px;
+      padding: 40px 60px 16px;
+    }
+    .sale-category-label h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 300; color: var(--deep);
+    }
+    .sale-category-label .title-line { flex: 1; }
+
+    @media (max-width: 900px) {
+      .sale-hero { padding: 60px 24px; }
+      .sale-hero h1 { font-size: 48px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .sale-category-label { padding: 32px 24px 12px; }
+      .sale-strip { flex-wrap: wrap; gap: 8px; padding: 16px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    ✦ Free delivery on orders over P500 &nbsp;&nbsp;|&nbsp;&nbsp; Sale — Up to 40% off selected lines ✦
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a>
+    <p class="tagline">Your destination for timeless beauty</p>
+    <div class="header-icons">
+      <a href="#" title="Search">🔍</a>
+      <a href="#" title="Account">👤</a>
+      <a href="#" title="Wishlist">🤍</a>
+      <a href="#" title="Cart">🛍</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Make-Up.html">Make-Up</a>
+    <a href="skincare.html">Skincare</a>
+    <a href="Fragrance.html">Fragrance</a>
+    <a href="Beauty accessories.html">Beauty Accessories</a>
+    <a href="sale.html" class="sale active">Sale</a>
+  </nav>
+
+  <!-- Sale Hero -->
+  <section class="sale-hero">
+    <div class="sale-hero-bg">SALE</div>
+    <p class="sale-hero-eyebrow">Limited Time Event</p>
+    <h1>The Luxoria <em>Sale</em></h1>
+    <p>Up to 40% off our most loved products. Treat yourself — you deserve it.</p>
+    <div class="sale-countdown" id="countdown">
+      <div class="countdown-unit"><span class="countdown-number" id="days">03</span><p class="countdown-label">Days</p></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-number" id="hours">14</span><p class="countdown-label">Hours</p></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-number" id="minutes">22</span><p class="countdown-label">Minutes</p></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><span class="countdown-number" id="seconds">09</span><p class="countdown-label">Seconds</p></div>
+    </div>
+    <a href="#products" class="hero-btn">Shop Sale Now</a>
+  </section>
+
+  <!-- Sale Strip -->
+  <div class="sale-strip">
+    <span>💄 Make-Up — Up to 30% Off</span>
+    <span>·</span>
+    <span>🌿 Skincare — Up to 40% Off</span>
+    <span>·</span>
+    <span>🌸 Fragrance — Up to 25% Off</span>
+    <span>·</span>
+    <span>✨ Accessories — Up to 35% Off</span>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" id="products">
+    <div class="filter-pills">
+      <button class="filter-pill active">All Sale</button>
+      <button class="filter-pill">Make-Up</button>
+      <button class="filter-pill">Skincare</button>
+      <button class="filter-pill">Fragrance</button>
+      <button class="filter-pill">Accessories</button>
+      <button class="filter-pill">Up to 20% Off</button>
+      <button class="filter-pill">Up to 40% Off</button>
+    </div>
+    <span class="filter-sort">Sort: Best Discount</span>
+  </div>
+
+  <!-- Make-Up Sale -->
+  <div class="sale-category-label">
+    <h3>Make-Up</h3>
+    <div class="title-line" style="height:1px;background:var(--border);"></div>
+    <a href="Make-Up.html" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);">View All →</a>
+  </div>
+
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-image bg-rose">💄<span class="pct-badge">-30%</span></div>
+      <div class="product-info">
+        <p class="product-name">Velvet Lip Colour</p>
+        <p class="product-sub">Long-lasting matte finish</p>
+        <p class="product-price">
+          <span class="product-price-original">P234</span>
+          <span class="product-price-sale">P164</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-lavender">✨<span class="pct-badge">-25%</span></div>
+      <div class="product-info">
+        <p class="product-name">Smoky Eye Quad</p>
+        <p class="product-sub">4 buildable shadow shades</p>
+        <p class="product-price">
+          <span class="product-price-original">P467</span>
+          <span class="product-price-sale">P350</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-blush">💋<span class="pct-badge">-20%</span></div>
+      <div class="product-info">
+        <p class="product-name">Gloss Luxe</p>
+        <p class="product-sub">High-shine lip gloss</p>
+        <p class="product-price">
+          <span class="product-price-original">P189</span>
+          <span class="product-price-sale">P151</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-gold">🌙<span class="pct-badge">-30%</span></div>
+      <div class="product-info">
+        <p class="product-name">Setting Powder</p>
+        <p class="product-sub">Weightless all-day finish</p>
+        <p class="product-price">
+          <span class="product-price-original">P312</span>
+          <span class="product-price-sale">P218</span>
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Skincare Sale -->
+  <div class="sale-category-label">
+    <h3>Skincare</h3>
+    <div class="title-line" style="height:1px;background:var(--border);"></div>
+    <a href="skincare.html" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);">View All →</a>
+  </div>
+
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-image bg-sage">🌿<span class="pct-badge">-40%</span></div>
+      <div class="product-info">
+        <p class="product-name">Radiance Serum</p>
+        <p class="product-sub">Brightening vitamin C formula</p>
+        <p class="product-price">
+          <span class="product-price-original">P467</span>
+          <span class="product-price-sale">P280</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-lavender">🫐<span class="pct-badge">-35%</span></div>
+      <div class="product-info">
+        <p class="product-name">Overnight Glow Mask</p>
+        <p class="product-sub">Resurface & restore</p>
+        <p class="product-price">
+          <span class="product-price-original">P498</span>
+          <span class="product-price-sale">P324</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-blush">👁️<span class="pct-badge">-25%</span></div>
+      <div class="product-info">
+        <p class="product-name">Eye Revival Cream</p>
+        <p class="product-sub">De-puff & brighten</p>
+        <p class="product-price">
+          <span class="product-price-original">P445</span>
+          <span class="product-price-sale">P334</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-sage">🌿<span class="pct-badge">-30%</span></div>
+      <div class="product-info">
+        <p class="product-name">Balancing Toner</p>
+        <p class="product-sub">Pore-refining & soothing</p>
+        <p class="product-price">
+          <span class="product-price-original">P267</span>
+          <span class="product-price-sale">P187</span>
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Fragrance Sale -->
+  <div class="sale-category-label">
+    <h3>Fragrance</h3>
+    <div class="title-line" style="height:1px;background:var(--border);"></div>
+    <a href="Fragrance.html" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);">View All →</a>
+  </div>
+
+  <div class="product-grid">
+    <a href="#" class="product-card">
+      <div class="product-image bg-blush">🌸<span class="pct-badge">-25%</span></div>
+      <div class="product-info">
+        <p class="product-name">Fleur Blanc</p>
+        <p class="product-sub">100ml Eau de Toilette</p>
+        <p class="product-price">
+          <span class="product-price-original">P712</span>
+          <span class="product-price-sale">P534</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-lavender">💜<span class="pct-badge">-20%</span></div>
+      <div class="product-info">
+        <p class="product-name">Velvet Iris</p>
+        <p class="product-sub">50ml Eau de Parfum</p>
+        <p class="product-price">
+          <span class="product-price-original">P845</span>
+          <span class="product-price-sale">P676</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-blush">🌺<span class="pct-badge">-30%</span></div>
+      <div class="product-info">
+        <p class="product-name">Luxury Mist Set</p>
+        <p class="product-sub">3 x 100ml Body Mist</p>
+        <p class="product-price">
+          <span class="product-price-original">P567</span>
+          <span class="product-price-sale">P397</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-deep" style="background:var(--deep);color:#fff;">🎁<span class="pct-badge">-25%</span></div>
+      <div class="product-info">
+        <p class="product-name">Discovery Gift Set</p>
+        <p class="product-sub">5 x 10ml miniatures</p>
+        <p class="product-price">
+          <span class="product-price-original">P489</span>
+          <span class="product-price-sale">P367</span>
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Accessories Sale -->
+  <div class="sale-category-label">
+    <h3>Accessories</h3>
+    <div class="title-line" style="height:1px;background:var(--border);"></div>
+    <a href="Beauty accessories.html" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);">View All →</a>
+  </div>
+
+  <div class="product-grid" style="padding-bottom:60px;">
+    <a href="#" class="product-card">
+      <div class="product-image bg-gold">✨<span class="pct-badge">-35%</span></div>
+      <div class="product-info">
+        <p class="product-name">Glow Brush Set</p>
+        <p class="product-sub">Professional 8-piece collection</p>
+        <p class="product-price">
+          <span class="product-price-original">P375</span>
+          <span class="product-price-sale">P244</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-sage">💆<span class="pct-badge">-30%</span></div>
+      <div class="product-info">
+        <p class="product-name">Gua Sha Stone</p>
+        <p class="product-sub">Rose quartz facial sculptor</p>
+        <p class="product-price">
+          <span class="product-price-original">P234</span>
+          <span class="product-price-sale">P164</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-blush">🧴<span class="pct-badge">-25%</span></div>
+      <div class="product-info">
+        <p class="product-name">Beauty Sponge Trio</p>
+        <p class="product-sub">Flawless blending set</p>
+        <p class="product-price">
+          <span class="product-price-original">P145</span>
+          <span class="product-price-sale">P109</span>
+        </p>
+      </div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="product-image bg-lavender">🪄<span class="pct-badge">-20%</span></div>
+      <div class="product-info">
+        <p class="product-name">Jade Facial Roller</p>
+        <p class="product-sub">De-puff & boost circulation</p>
+        <p class="product-price">
+          <span class="product-price-original">P198</span>
+          <span class="product-price-sale">P158</span>
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="feature-strip">
+    <div class="feature-item"><div class="feature-icon">🚚</div><p class="feature-title">Free Delivery</p><p class="feature-text">On all orders over P500</p></div>
+    <div class="feature-item"><div class="feature-icon">💎</div><p class="feature-title">Luxury Curated</p><p class="feature-text">Every product hand-selected</p></div>
+    <div class="feature-item"><div class="feature-icon">✦</div><p class="feature-title">Beauty Rewards</p><p class="feature-text">Earn points with every purchase</p></div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a><p>Your destination for timeless beauty. Curated products that enhance your natural radiance.</p></div>
+      <div class="footer-col"><h4>Shop</h4><a href="Make-Up.html">Make-Up</a><a href="skincare.html">Skincare</a><a href="Fragrance.html">Fragrance</a><a href="Beauty accessories.html">Accessories</a></div>
+      <div class="footer-col"><h4>Help</h4><a href="#">Delivery Info</a><a href="#">Returns</a><a href="#">Track Order</a><a href="#">Contact Us</a></div>
+      <div class="footer-col"><h4>Follow Us</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Facebook</a><a href="#">Pinterest</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Luxoria Beauty &nbsp;·&nbsp; All rights reserved</div>
+  </footer>
+
+  <script>
+    // Filter pills
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+
+    // Live countdown — ends 3 days from now
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 3);
+    endDate.setHours(endDate.getHours() + 14);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+      if (diff <= 0) return;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

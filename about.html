@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Luxoria Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== ABOUT PAGE SPECIFIC ===== */
+    .about-hero {
+      background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 50%, var(--lavender) 100%);
+      padding: 100px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-bg {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 200px;
+      font-weight: 300;
+      color: rgba(180,140,130,0.05);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .about-hero-eyebrow {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose-deep); margin-bottom: 16px;
+    }
+    .about-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 68px; font-weight: 300;
+      color: var(--deep); line-height: 1.1; margin-bottom: 20px;
+    }
+    .about-hero h1 em { font-style: italic; color: var(--rose-deep); }
+    .about-hero p {
+      color: var(--text-light); font-size: 15px; max-width: 560px;
+      margin: 0 auto; line-height: 1.8;
+    }
+
+    /* Story */
+    .story-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 80px 60px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .story-visual {
+      background: linear-gradient(135deg, var(--blush), var(--rose));
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      padding: 60px;
+      min-height: 400px;
+    }
+    .story-emoji { font-size: 80px; }
+    .story-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--deep); text-align: center;
+      line-height: 1.5; max-width: 260px;
+    }
+    .story-content {
+      background: var(--warm-white);
+      padding: 60px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .story-content .about-eyebrow {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose-deep); margin-bottom: 16px;
+    }
+    .story-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 300; color: var(--deep);
+      line-height: 1.3; margin-bottom: 20px;
+    }
+    .story-content p {
+      color: var(--text-light); font-size: 14px; line-height: 1.9;
+      margin-bottom: 14px;
+    }
+
+    /* Values */
+    .values-section { padding: 60px; background: var(--warm-white); }
+    .values-section .section-title { padding: 0 0 40px; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      text-align: center;
+      transition: box-shadow 0.25s;
+    }
+    .value-card:hover { box-shadow: 0 8px 32px var(--shadow); }
+    .value-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin: 0 auto 20px;
+    }
+    .value-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 400; color: var(--deep);
+      margin-bottom: 12px;
+    }
+    .value-card p { font-size: 13px; color: var(--text-light); line-height: 1.8; }
+
+    /* Team */
+    .team-section { padding: 80px 60px; }
+    .team-section .section-title { padding: 0 0 48px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .team-card { text-align: center; }
+    .team-avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+    }
+    .team-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; color: var(--deep); margin-bottom: 4px;
+    }
+    .team-card .team-role {
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--rose-deep); margin-bottom: 12px;
+    }
+    .team-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; max-width: 280px; margin: 0 auto; }
+
+    /* Testimonials */
+    .testimonials-section {
+      background: var(--deep);
+      padding: 80px 60px;
+    }
+    .testimonials-section .section-title h2 { color: var(--gold); }
+    .testimonials-section .section-title p { color: rgba(255,255,255,0.4); }
+    .testimonials-section .title-line { background: var(--rose-deep); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 0;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 36px 32px;
+    }
+    .testimonial-stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic;
+      color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 20px;
+    }
+    .testimonial-author { font-size: 12px; letter-spacing: 1px; color: var(--rose-deep); text-transform: uppercase; }
+
+    /* CTA Strip */
+    .cta-strip {
+      text-align: center;
+      padding: 80px 60px;
+      background: var(--blush);
+    }
+    .cta-strip h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 300; color: var(--deep);
+      margin-bottom: 16px;
+    }
+    .cta-strip p { color: var(--text-light); font-size: 14px; margin-bottom: 32px; }
+    .cta-strip .hero-btn { margin: 0 8px; }
+    .cta-outline {
+      display: inline-block;
+      border: 1px solid var(--deep);
+      color: var(--deep);
+      padding: 14px 36px;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      margin: 0 8px;
+    }
+    .cta-outline:hover { background: var(--deep); color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .about-hero { padding: 60px 24px; }
+      .about-hero h1 { font-size: 44px; }
+      .story-section { grid-template-columns: 1fr; margin: 40px 24px; }
+      .values-grid, .team-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .values-section, .team-section, .testimonials-section, .cta-strip { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    ✦ Free delivery on orders over P500 &nbsp;&nbsp;|&nbsp;&nbsp; New arrivals every Friday ✦
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a>
+    <p class="tagline">Your destination for timeless beauty</p>
+    <div class="header-icons">
+      <a href="#" title="Search">🔍</a>
+      <a href="#" title="Account">👤</a>
+      <a href="#" title="Wishlist">🤍</a>
+      <a href="#" title="Cart">🛍</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Make-Up.html">Make-Up</a>
+    <a href="skincare.html">Skincare</a>
+    <a href="Fragrance.html">Fragrance</a>
+    <a href="Beauty accessories.html">Beauty Accessories</a>
+    <a href="sale.html" class="sale">Sale</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="about-hero-bg">Luxoria</div>
+    <p class="about-hero-eyebrow">Our Story</p>
+    <h1>Beauty is not a <em>trend</em>,<br>it's a feeling</h1>
+    <p>We believe every person deserves to feel radiant, confident, and celebrated — every single day.</p>
+  </section>
+
+  <!-- Story -->
+  <section class="story-section">
+    <div class="story-visual">
+      <div class="story-emoji">🌹</div>
+      <p class="story-quote">"Beauty begins the moment you decide to be yourself."</p>
+    </div>
+    <div class="story-content">
+      <p class="about-eyebrow">How it started</p>
+      <h2>Born from a love of timeless beauty</h2>
+      <p>Luxoria Beauty was founded with a simple but powerful vision: to bring together the most carefully selected beauty products and make them accessible to everyone who believes beauty is worth celebrating.</p>
+      <p>We scour the world for formulas that deliver on their promises — products that feel as luxurious as they perform. Every item in our collection is tested, loved, and chosen with intention.</p>
+      <p>Today, Luxoria Beauty is a destination for those who treat self-care not as indulgence, but as a ritual of self-respect.</p>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div class="section-title">
+      <h2>What We Stand For</h2>
+      <p>The values that guide every decision we make</p>
+      <div class="title-line"></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon bg-rose">💎</div>
+        <h3>Curated Quality</h3>
+        <p>We never compromise on quality. Every product is hand-selected and held to the highest standard before it ever reaches you.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon bg-sage">🌿</div>
+        <h3>Clean Beauty</h3>
+        <p>We prioritise products that are kind to your skin and the planet — thoughtfully formulated, responsibly sourced.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon bg-lavender">✨</div>
+        <h3>Inclusive Radiance</h3>
+        <p>Beauty has no single face. Our range is curated to celebrate every skin tone, type, and story.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team-section">
+    <div class="section-title">
+      <h2>Meet the Team</h2>
+      <p>The people behind the magic</p>
+      <div class="title-line"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar bg-rose">👩🏽</div>
+        <h3>Amara Sithole</h3>
+        <p class="team-role">Founder & Creative Director</p>
+        <p>With over 12 years in the beauty industry, Amara's eye for elegance shapes every corner of Luxoria Beauty.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar bg-sage">👩🏼</div>
+        <h3>Leila Okafor</h3>
+        <p class="team-role">Head of Product Curation</p>
+        <p>A trained cosmetic chemist, Leila ensures every product on our shelves is backed by science and sealed with love.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar bg-lavender">👩🏾</div>
+        <h3>Naledi Moagi</h3>
+        <p class="team-role">Customer Experience Lead</p>
+        <p>Naledi is the heart of our community — dedicated to making every Luxoria customer feel seen and valued.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="section-title">
+      <h2>Loved by Our Community</h2>
+      <p>Real words from real customers</p>
+      <div class="title-line"></div>
+    </div>
+    <br><br>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Luxoria completely changed how I shop for beauty. I trust every single thing they carry."</p>
+        <p class="testimonial-author">— Thabo M., Gaborone</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The packaging, the products, the service — everything feels premium. I keep coming back."</p>
+        <p class="testimonial-author">— Kefilwe D., Francistown</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Finally a beauty store that feels made for me. The curation is just perfect — nothing feels random."</p>
+        <p class="testimonial-author">— Mpho R., Gaborone</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <h2>Ready to find your glow?</h2>
+    <p>Explore our carefully curated collections — made to make you feel extraordinary.</p>
+    <a href="index.html" class="hero-btn">Shop Now</a>
+    <a href="#" class="cta-outline">Join Beauty Rewards</a>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a>
+        <p>Your destination for timeless beauty. Curated products that enhance your natural radiance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="Make-Up.html">Make-Up</a>
+        <a href="skincare.html">Skincare</a>
+        <a href="Fragrance.html">Fragrance</a>
+        <a href="Beauty accessories.html">Accessories</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">Delivery Info</a>
+        <a href="#">Returns</a>
+        <a href="#">Track Order</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Luxoria Beauty &nbsp;·&nbsp; All rights reserved</div>
+  </footer>
+
+</body>
+</html>
