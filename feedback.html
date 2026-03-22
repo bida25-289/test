@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback — Luxoria Beauty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .feedback-hero {
+            background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 60%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feedback-hero-bg {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 180px;
+            font-weight: 300;
+            color: rgba(181, 96, 106, 0.05);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .feedback-hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .feedback-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--deep);
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .feedback-hero h1 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+
+        .feedback-hero p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /*FORM WRAPPER*/
+        .feedback-wrapper {
+            max-width: 780px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .feedback-form-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 52px 56px;
+        }
+
+        .form-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--deep);
+            margin-bottom: 6px;
+        }
+
+        .form-subheading {
+            font-size: 0.82rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+
+        /*FORM ROWS */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--deep);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.88rem;
+            color: var(--deep);
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--rose-deep);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.7;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▾';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+
+        /*STAR RATING*/
+        .rating-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--deep);
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .star-group {
+            display: flex;
+            gap: 6px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .star-group input {
+            display: none;
+        }
+
+        .star-group label {
+            font-size: 1.8rem;
+            color: var(--border);
+            cursor: pointer;
+            transition: color 0.15s;
+            line-height: 1;
+        }
+
+        .star-group label:hover,
+        .star-group label:hover ~ label,
+        .star-group input:checked ~ label {
+            color: var(--rose-deep);
+        }
+
+        /*RADIO*/
+        .radio-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--deep);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 28px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--deep);
+            cursor: pointer;
+            font-weight: 300;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--rose-deep);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /*DIVIDER*/
+        .form-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 32px 0;
+        }
+
+        /*SUBMIT*/
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--deep);
+            color: var(--white);
+            border: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 32px;
+        }
+
+        .submit-btn:hover {
+            background: var(--rose-deep);
+        }
+
+        /*SUCCESS MESSAGE*/
+        .success-message {
+            display: none;
+            background: #d8e8d8;
+            border: 1px solid #8aab8a;
+            padding: 20px 28px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .success-message p {
+            font-size: 0.9rem;
+            color: var(--deep);
+            letter-spacing: 0.05em;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /*RESPONSIVE*/
+        @media (max-width: 900px) {
+            .feedback-hero { padding: 56px 24px; }
+            .feedback-hero h1 { font-size: 2.4rem; }
+            .feedback-wrapper { margin: 40px auto; padding: 0 16px; }
+            .feedback-form-card { padding: 36px 24px; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ✦ Free delivery on orders over P500 &nbsp;&nbsp;|&nbsp;&nbsp; New arrivals every Friday ✦
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a>
+        <p class="tagline">Your destination for timeless beauty</p>
+        <div class="header-icons">
+            <a href="#" title="Search">🔍</a>
+            <a href="#" title="Account">👤</a>
+            <a href="#" title="Wishlist">🤍</a>
+            <a href="#" title="Cart">🛍</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="Make-Up.html">Make-Up</a>
+        <a href="skincare.html">Skincare</a>
+        <a href="Fragrance.html">Fragrance</a>
+        <a href="Beauty accessories.html">Beauty Accessories</a>
+        <a href="sale.html" class="sale">Sale</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html" class="active">Feedback</a>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="feedback-hero">
+        <div class="feedback-hero-bg">Feedback</div>
+        <p class="feedback-hero-eyebrow">We'd Love to Hear From You</p>
+        <h1>Share Your <em>Experience</em></h1>
+        <p>Your thoughts help us grow. Tell us about your experience with Luxoria Beauty — every word matters to us.</p>
+    </section>
+
+    <!-- Feedback Form -->
+    <div class="feedback-wrapper">
+        <div class="feedback-form-card">
+
+            <h2 class="form-heading">Leave Your Feedback</h2>
+            <p class="form-subheading">Fill in the form below and our team will read every submission personally.</p>
+
+            <form id="feedbackForm" novalidate>
+
+                <!-- Name and Email -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="e.g. Amara Sithole" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="e.g. amara@email.com" required>
+                    </div>
+                </div>
+
+                <!-- Product Purchased -->
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="product">Product Purchased</label>
+                        <input type="text" id="product" name="product" placeholder="e.g. Velvet Lip Colour">
+                    </div>
+                </div>
+
+                <!-- Category and Rating -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <div class="select-wrapper">
+                            <select id="category" name="category">
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="makeup">Make-Up</option>
+                                <option value="skincare">Skincare</option>
+                                <option value="fragrance">Fragrance</option>
+                                <option value="accessories">Beauty Accessories</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="rating-label">Your Rating</span>
+                        <div class="star-group">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5" title="5 stars">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 stars">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 stars">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="2 stars">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="1 star">★</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="comments">Your Comments</label>
+                        <textarea id="comments" name="comments" placeholder="Tell us what you loved, what could be better, or anything else on your mind..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-divider"></div>
+
+                <!-- Recommend -->
+                <div class="form-group">
+                    <span class="radio-label">Would you recommend Luxoria Beauty to a friend?</span>
+                    <div class="radio-group">
+                        <label><input type="radio" name="recommend" value="yes"> Yes, definitely</label>
+                        <label><input type="radio" name="recommend" value="maybe"> Maybe</label>
+                        <label><input type="radio" name="recommend" value="no"> Not sure</label>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMsg">
+                <p>✓ &nbsp; Thank you for your feedback! We appreciate you taking the time and will be in touch soon.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Feature Strip -->
+    <div class="feature-strip">
+        <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <p class="feature-title">Free Delivery</p>
+            <p class="feature-text">On all orders over P500</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <p class="feature-title">Luxury Curated</p>
+            <p class="feature-text">Every product hand-selected</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">✦</div>
+            <p class="feature-title">Beauty Rewards</p>
+            <p class="feature-text">Earn points with every purchase</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">LUXORIA <span>BEAUTY</span></a>
+                <p>Your destination for timeless beauty. Curated products that enhance your natural radiance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="Make-Up.html">Make-Up</a>
+                <a href="skincare.html">Skincare</a>
+                <a href="Fragrance.html">Fragrance</a>
+                <a href="Beauty accessories.html">Accessories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <a href="#">Delivery Info</a>
+                <a href="#">Returns</a>
+                <a href="#">Track Order</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Luxoria Beauty &nbsp;·&nbsp; All rights reserved
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!name || !email) {
+                alert('Please fill in your name and email before submitting.');
+                return;
+            }
+
+            // Hide form, show success
+            this.style.display = 'none';
+            document.getElementById('successMsg').classList.add('show');
+
+            // Scroll to success message
+            document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+
+</body>
+</html>
